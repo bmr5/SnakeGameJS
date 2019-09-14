@@ -36,15 +36,15 @@ Because each of the files is included in a script tag on index.html, these three
 
 1. Head Class
 
-    - [ ] make the head of the snake be able to turn based on the arrow keys
-    - [ ] when the head of the snake reaches a border, end the game
+    - [x] make the head of the snake be able to turn based on the arrow keys
+    - [x] when the head of the snake reaches a border, end the game
 
 1. Apple Class
 
-    - [ ] the apple should appear randomly on the screen
-    - [ ] the apple should appear within the size of the board
-    - [ ] remove the apple when the head of the snake reaches the apple
-    - [ ] another apple should appear on the screen
+    - [x] the apple should appear randomly on the screen
+    - [x] the apple should appear within the size of the board
+    - [x] remove the apple when the head of the snake reaches the apple
+    - [x] another apple should appear on the screen
     - [ ] the apple should not appear on the snake
 
 ## Extension Challenges

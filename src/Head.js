@@ -16,12 +16,33 @@ class Head {
     let direction = this.currentDirection;
     let position = this.node.position();
 
-    if (direction === 'right') {
-      position.left += 50;
+    switch (direction) {
+      case 'right':
+        position.left += 50;
+        break;
+      case 'left':
+        position.left -= 50;
+        break;
+      case 'up':
+        position.top -= 50;
+        break;
+      case 'down':
+        position.top += 50;
+        break;
+      default:
+        position.left += 50;
     }
 
     this.node.css(position);
-    setTimeout(this.move.bind(this), this.SPEED);
+    const id = setTimeout(this.move.bind(this), this.SPEED);
+
+    if (position.left === 700 || position.left === -50) {
+      clearTimeout(id);
+      alert('YOU LOST');
+    } else if (position.top === 700 || position.top === -50) {
+      clearTimeout(id);
+      alert('YOU LOST');
+    }
   }
 
 }
