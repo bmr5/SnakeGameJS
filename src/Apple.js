@@ -11,7 +11,7 @@ class Apple {
   }
 
   randomCoord() {
-    const coordinate = Math.floor(Math.random() * (19) * 50);
+    const coordinate = Math.floor(Math.random() * (17) * 50);
     this.location = {top: this.top + 'px', left: this.left + 'px'}
     return coordinate - coordinate % 50;
   }

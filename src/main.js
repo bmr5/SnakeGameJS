@@ -158,11 +158,11 @@ $(document).ready(function () {
     let position = head.node.position();
 
     //out of bounds logic
-    if (position.left === 1000 || position.left === -50) {
+    if (position.left === 900 || position.left === -50) {
       clearTimeout(id);
       alert('YOU WIN');
       window.location.reload()
-    } else if (position.top === 1000 || position.top === -50) {
+    } else if (position.top === 900 || position.top === -50) {
       clearTimeout(id);
       alert('YOU WIN');
       window.location.reload()

@@ -23,8 +23,8 @@ body{
 }
 
 #board {
-  height: 1000px;
-  width: 1000px;
+  height: 900px;
+  width: 900px;
   /* border: 1px white solid; */
   position: relative;
   background: url(https://media.giphy.com/media/i8LQDpYfnzYWc/giphy.gif) no-repeat;
