@@ -31,8 +31,21 @@ $(document).ready(function () {
   const bodyPositions = []
 
   setInterval( () => {
-    move()
-    //get head location first
+    // head.move()
+    // let position = head.node.position();
+    // console.log(position)
+    // head.node.css(position);
+
+    // if (position.left === 700 || position.left === -50) {
+    //   clearTimeout(id);
+    //   alert('YOU LOST');
+    // } else if (position.top === 700 || position.top === -50) {
+    //   clearTimeout(id);
+    //   alert('YOU LOST');
+    // }
+
+
+    //get head location
     let headLocation = {
       top: headId.style.top,
       left: headId.style.left
@@ -72,9 +85,9 @@ $(document).ready(function () {
     bodyPositions.forEach(pos => {
       let body = new Body($('#board'), pos);
     })
-    console.log(...bodyPositions)
 
     // console.log(head.node[0].style.left, head.node[0].style.top);
     // console.log(apple.node[0].style.left, apple.node[0].style.top);    
   }, 200);
+
 });
