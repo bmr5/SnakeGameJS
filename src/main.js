@@ -130,7 +130,7 @@ $(document).ready(function () {
       apple.node[0].style.left = `${apple.randomCoord()}`;
       apple.node[0].style.top = `${apple.randomCoord()}`;
       if (speed > 70) {
-        speed -= 20;
+        speed -= 10;
       }
 
       //increment score on apple eating
@@ -158,11 +158,11 @@ $(document).ready(function () {
     let position = head.node.position();
 
     //out of bounds logic
-    if (position.left === 700 || position.left === -50) {
+    if (position.left === 1000 || position.left === -50) {
       clearTimeout(id);
       alert('YOU WIN');
       window.location.reload()
-    } else if (position.top === 700 || position.top === -50) {
+    } else if (position.top === 1000 || position.top === -50) {
       clearTimeout(id);
       alert('YOU WIN');
       window.location.reload()
