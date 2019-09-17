@@ -21,11 +21,12 @@ $(document).ready(function () {
   
   //build the game
   const head = new Head($('#board'));
-  const apple = new Apple($('#board'));
+  const apple = new Apple($('#board'));  
+
   
 
   $('body').on('keydown', function (e) {
-    console.log(e.keyCode)
+
     switch (e.keyCode) {
       case 32:
         if (!isPlaying) {
@@ -39,19 +40,19 @@ $(document).ready(function () {
         
         break;
       case 37:
-        if (head.currentDirection === 'right') break;
+        if (prevDirection === 'right') break;
         head.currentDirection = 'left';
         break;
       case 39:
-        if (head.currentDirection === 'left') break;
+        if (prevDirection === 'left') break;
         head.currentDirection = 'right';
         break;
       case 38:
-        if (head.currentDirection === 'down') break;
+        if (prevDirection === 'down') break;
         head.currentDirection = 'up';
         break;
       case 40:
-        if (head.currentDirection === 'up') break;
+        if (prevDirection === 'up') break;
         head.currentDirection = 'down';
         break;
         //resets high score on 'r' press
@@ -59,9 +60,11 @@ $(document).ready(function () {
         localStorage.setItem('HighScore', '0');
         window.location.reload();
         break;
-      default: head.currentDirection = 'right';
+      default: head.currentDirection = prevDirection;
         break;
     }
+    console.log(head.currentDirection)
+    console.log(prevDirection)
   });
 
 
@@ -69,8 +72,28 @@ $(document).ready(function () {
   const appleId = document.querySelector('#apple');
   const bodyPositions = [];
   let speed = 150;
+  let prevDirection = head.currentDirection;
 
   const snakeGame = () => {
+
+    //if apple spawns at a body location then redo it
+  // bodyPositions.forEach(pos => {
+
+  //   console.log('testing apple position')
+  //   let applePos = JSON.stringify(apple.location)
+  //   let bodyPos = JSON.stringify(pos)
+  //   console.log(applePos + ' ' + bodyPos)
+
+
+  //   while (applePos === bodyPos) {
+  //     console.log('reassign apple')
+  //     applePos = JSON.stringify(apple.location)
+  //     bodyPos = JSON.stringify(pos)
+
+  //     apple.node[0].style.left = `${apple.randomCoord()}`;
+  //     apple.node[0].style.top = `${apple.randomCoord()}`;
+  //   }
+  // })
 
     counter.textContent = 'Score: ' + bodyPositions.length
     //get head location
@@ -109,6 +132,8 @@ $(document).ready(function () {
       if (speed > 70) {
         speed -= 20;
       }
+
+      //increment score on apple eating
       let highscoreVal = localStorage.getItem('HighScore');
       let currentScore = bodyPositions.length;
       if (currentScore > highscoreVal){
@@ -125,6 +150,8 @@ $(document).ready(function () {
     })
 
     //move the head of the snake
+    prevDirection = head.currentDirection;
+
     head.move()
 
     //declare the position to check if it's out of bounds

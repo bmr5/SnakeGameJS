@@ -7,10 +7,12 @@ class Apple {
     this.top = this.randomCoord()
     this.left = this.randomCoord()
     this.node.css({ top: this.top, left: this.left });
+    this.location = { top: this.top, left: this.left }
   }
 
   randomCoord() {
     const coordinate = Math.floor(Math.random() * (13) * 50);
+    this.location = {top: this.top + 'px', left: this.left + 'px'}
     return coordinate - coordinate % 50;
   }
 
