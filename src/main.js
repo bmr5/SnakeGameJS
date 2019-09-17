@@ -5,15 +5,19 @@ $(document).ready(function () {
   $('body').on('keydown', function (e) {
     switch (e.keyCode) {
       case 37:
+        if (head.currentDirection === 'right') break;
         head.currentDirection = 'left';
         break;
       case 39:
+        if (head.currentDirection === 'left') break;
         head.currentDirection = 'right';
         break;
       case 38:
+        if (head.currentDirection === 'down') break;
         head.currentDirection = 'up';
         break;
       case 40:
+        if (head.currentDirection === 'up') break;
         head.currentDirection = 'down';
         break;
       default: head.currentDirection = 'right';
@@ -21,16 +25,56 @@ $(document).ready(function () {
     }
   });
 
-  console.log(head.node[0].style.left, head.node[0].style.top);
-  console.log(apple.node[0].style.left, apple.node[0].style.top);
 
   const headId = document.querySelector('#head');
   const appleId = document.querySelector('#apple');
+  const bodyPositions = []
 
-  setInterval(() => {
+  setInterval( () => {
+    move()
+    //get head location first
+    let headLocation = {
+      top: headId.style.top,
+      left: headId.style.left
+    }
+    // console.log(JSON.stringify(lastHeadPosition), 'last')
+    // console.log(JSON.stringify(headLocation), 'curr')
+
+    //collision detection for tail collisions
+    for (let i =0; i<bodyPositions.length; i++) {
+      let body = JSON.stringify(bodyPositions[i]);
+      let head = JSON.stringify(headLocation);
+
+      if (body === head) {
+        alert('YOU LOST');
+      }
+    }
+    
+    //display our whole body from bodyPositions array - left to right
+    var allTails = document.querySelectorAll('.body-piece')
+
+    for (var i=allTails.length-1; i>=0; i--) {
+      document.querySelector('#board').removeChild(allTails[i]);
+    } 
+
+    //push Head Position into the body Array
+    bodyPositions.unshift(headLocation)
+    
+    //if we hit an apple - new random apple - no change to body array because apple 
+      //location is already pushed in as the new body
     if (headId.style.left === appleId.style.left && headId.style.top === appleId.style.top) {
       apple.node[0].style.left = `${apple.randomCoord()}`;
       apple.node[0].style.top = `${apple.randomCoord()}`;
     }
-  }, 500);
+    //if we don't hit an apple we want to remove the last element from the body array
+    else {bodyPositions.pop()}
+
+    bodyPositions.forEach(pos => {
+      let body = new Body($('#board'), pos);
+    })
+    console.log(...bodyPositions)
+
+    // console.log(head.node[0].style.left, head.node[0].style.top);
+    // console.log(apple.node[0].style.left, apple.node[0].style.top);    
+  }, 200);
 });

@@ -19,3 +19,11 @@
   position: absolute;
   z-index: -1
 }
+
+.body-piece{
+  background: black;
+  height: 50px;
+  width: 50px;
+  background-color: black;
+  position: absolute;
+}
