@@ -2,7 +2,7 @@ class Apple {
 
   constructor($el) {
     this.node = $('<img id="apple"></img>');
-    this.node.attr('src', 'src/assets/apple.jpg');
+    this.node.attr('src', 'https://media.giphy.com/media/MNHk1YGGkWaha/giphy.gif');
     $el.append(this.node);
     this.top = this.randomCoord()
     this.left = this.randomCoord()

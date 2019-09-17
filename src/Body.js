@@ -2,7 +2,7 @@ class Body {
 
     // this is what's called when you use the "new" keyword
     constructor($el, pos) {
-      this.node = $('<div class="body-piece"></div>');
+      this.node = $(`<div class="body-piece"><img src='src/assets/flame.png'></img></div>`);
       $el.append(this.node);
       this.node.css(pos);
     //   setTimeout(this.move.bind(this), this.SPEED);
