@@ -1,6 +1,10 @@
 $(document).ready(function () {
   const head = new Head($('#board'));
   const apple = new Apple($('#board'));
+  const counter = document.createElement('p')
+  document.body.append(counter)
+  counter.textContent = 'Score: 0'
+
 
   $('body').on('keydown', function (e) {
     switch (e.keyCode) {
@@ -30,21 +34,9 @@ $(document).ready(function () {
   const appleId = document.querySelector('#apple');
   const bodyPositions = []
 
-  setInterval( () => {
-    // head.move()
-    // let position = head.node.position();
-    // console.log(position)
-    // head.node.css(position);
-
-    // if (position.left === 700 || position.left === -50) {
-    //   clearTimeout(id);
-    //   alert('YOU LOST');
-    // } else if (position.top === 700 || position.top === -50) {
-    //   clearTimeout(id);
-    //   alert('YOU LOST');
-    // }
-
-
+  let id = setInterval( () => {
+     
+    counter.textContent = 'Score: ' + bodyPositions.length
     //get head location
     let headLocation = {
       top: headId.style.top,
@@ -85,9 +77,19 @@ $(document).ready(function () {
     bodyPositions.forEach(pos => {
       let body = new Body($('#board'), pos);
     })
+    head.move.bind(head)
+    head.move() 
+    let position = head.node.position();
+  
 
-    // console.log(head.node[0].style.left, head.node[0].style.top);
-    // console.log(apple.node[0].style.left, apple.node[0].style.top);    
-  }, 200);
+    if (position.left === 700 || position.left === -50) {
+      clearTimeout(id);
+      alert('YOU LOST');
+    } else if (position.top === 700 || position.top === -50) {
+      clearTimeout(id);
+      alert('YOU LOST');
+    }
+
+  }, 70);
 
 });
