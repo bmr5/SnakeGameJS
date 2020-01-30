@@ -76,25 +76,6 @@ $(document).ready(function () {
 
   const snakeGame = () => {
 
-    //if apple spawns at a body location then redo it
-  // bodyPositions.forEach(pos => {
-
-  //   console.log('testing apple position')
-  //   let applePos = JSON.stringify(apple.location)
-  //   let bodyPos = JSON.stringify(pos)
-  //   console.log(applePos + ' ' + bodyPos)
-
-
-  //   while (applePos === bodyPos) {
-  //     console.log('reassign apple')
-  //     applePos = JSON.stringify(apple.location)
-  //     bodyPos = JSON.stringify(pos)
-
-  //     apple.node[0].style.left = `${apple.randomCoord()}`;
-  //     apple.node[0].style.top = `${apple.randomCoord()}`;
-  //   }
-  // })
-
     counter.textContent = 'Score: ' + bodyPositions.length
     //get head location
     let headLocation = {
